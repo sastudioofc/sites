@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brasa Burger</title>
+<meta name="description" content="Hambúrguer artesanal na brasa. Peça pelo WhatsApp com entrega ou retirada.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fff8ee;
+    --dark: #1e1410;
+    --text: #2a1d17;
+    --muted: #7a6458;
+    --red: #e2401c;
+    --yellow: #ffb81c;
+    --card: #ffffff;
+    --line: #f0e2cf;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Poppins, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, .brand { font-family: "Bebas Neue", Impact, sans-serif; letter-spacing: .02em; font-weight: 400; }
+
+  .top { background: var(--dark); color: #fff; }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+  .brand { font-size: 2rem; }
+  .brand span { color: var(--yellow); }
+  .open { font-size: .85rem; background: #2f211b; padding: 6px 12px; border-radius: 999px; }
+  .open b { color: #46d36b; }
+
+  .hero { padding: 50px 0 80px; display: grid; gap: 30px; grid-template-columns: 1.2fr .8fr; align-items: center; }
+  @media (max-width: 800px) { .hero { grid-template-columns: 1fr; text-align: center; } }
+  h1 { font-size: clamp(3.4rem, 11vw, 6.5rem); line-height: .92; }
+  h1 em { font-style: normal; color: var(--yellow); }
+  .hero p { color: #d8c8bd; font-size: 1.1rem; margin: 18px 0 30px; max-width: 460px; }
+  @media (max-width: 800px) { .hero p { margin-left: auto; margin-right: auto; } }
+  .btn { display: inline-block; background: var(--red); color: #fff; font-weight: 700; text-decoration: none; padding: 15px 28px; border-radius: 12px; }
+  .btn:hover { filter: brightness(1.08); }
+  .btn.alt { background: var(--yellow); color: var(--dark); margin-left: 8px; }
+  .burger { font-size: clamp(8rem, 24vw, 13rem); text-align: center; filter: drop-shadow(0 20px 30px rgba(226,64,28,.45)); }
+
+  .strip { background: var(--yellow); color: var(--dark); font-weight: 700; text-align: center; padding: 12px; font-size: .95rem; }
+
+  section { padding: 70px 0; }
+  h2 { font-size: 3rem; text-align: center; }
+  .sub { text-align: center; color: var(--muted); margin-bottom: 36px; }
+
+  .tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 28px; flex-wrap: wrap; }
+  .tab { border: 2px solid var(--dark); background: none; padding: 8px 18px; border-radius: 999px; font: inherit; font-weight: 600; cursor: pointer; }
+  .tab.on { background: var(--dark); color: #fff; }
+
+  .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .food { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; }
+  .food .emoji { font-size: 3rem; margin-bottom: 8px; }
+  .food h3 { font-size: 1.15rem; }
+  .food p { color: var(--muted); font-size: .9rem; flex: 1; margin: 6px 0 14px; }
+  .food .row { display: flex; justify-content: space-between; align-items: center; }
+  .food .price { font-weight: 700; font-size: 1.15rem; color: var(--red); }
+  .add { background: var(--red); color: #fff; border: 0; border-radius: 10px; padding: 8px 14px; font: inherit; font-weight: 600; cursor: pointer; }
+  .badge { align-self: flex-start; background: var(--yellow); font-size: .75rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; margin-bottom: 6px; }
+  [hidden] { display: none !important; }
+
+  .how { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); text-align: center; }
+  .how div { background: var(--card); border-radius: 18px; padding: 26px; border: 1px solid var(--line); }
+  .how b { display: block; font-size: 2rem; }
+
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; background: var(--dark); color: #fff; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; transform: translateY(100%); transition: transform .25s; z-index: 5; }
+  .bar.show { transform: none; }
+  .bar .btn { padding: 10px 18px; }
+
+  footer { background: var(--dark); color: #bfaea3; text-align: center; padding: 34px 20px 90px; font-size: .9rem; }
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="wrap">
+    <nav>
+      <div class="brand">Brasa <span>Burger</span></div>
+      <div class="open"><b>●</b> Aberto hoje até 23h30</div>
+    </nav>
+    <div class="hero">
+      <div>
+        <h1>Smash na <em>brasa</em>,<br>direto pra sua casa</h1>
+        <p>Blend de 160g, pão brioche da casa e cheddar de verdade. Peça pelo WhatsApp em 1 minuto.</p>
+        <a class="btn" href="#cardapio">Ver cardápio</a><a class="btn alt" href="#cardapio">Pedir agora</a>
+      </div>
+      <div class="burger" aria-hidden="true">🍔</div>
+    </div>
+  </div>
+</div>
+<div class="strip">🛵 Entrega grátis acima de R$ 60 no bairro · Retirada em 20 min</div>
+
+<section id="cardapio">
+  <div class="wrap">
+    <h2>Cardápio</h2>
+    <p class="sub">Toque em "Adicionar" e finalize pelo WhatsApp.</p>
+    <div class="tabs">
+      <button class="tab on" data-cat="burger">Burgers</button>
+      <button class="tab" data-cat="side">Porções</button>
+      <button class="tab" data-cat="drink">Bebidas</button>
+    </div>
+    <div class="grid">
+      <div class="food" data-cat="burger"><span class="badge">Mais pedido</span><div class="emoji">🍔</div><h3>Brasa Clássico</h3><p>Blend 160g, cheddar, cebola caramelizada e molho da casa.</p><div class="row"><span class="price">R$ 32</span><button class="add" data-price="32">Adicionar</button></div></div>
+      <div class="food" data-cat="burger"><div class="emoji">🥓</div><h3>Bacon Duplo</h3><p>Dois smash de 90g, muito bacon crocante e cheddar duplo.</p><div class="row"><span class="price">R$ 38</span><button class="add" data-price="38">Adicionar</button></div></div>
+      <div class="food" data-cat="burger"><div class="emoji">🌶️</div><h3>Pimenta Brava</h3><p>Blend 160g, pepper jack, jalapeño e maionese de chipotle.</p><div class="row"><span class="price">R$ 36</span><button class="add" data-price="36">Adicionar</button></div></div>
+      <div class="food" data-cat="burger"><div class="emoji">🥬</div><h3>Veggie da Brasa</h3><p>Burger de grão-de-bico, queijo prato, alface e tomate.</p><div class="row"><span class="price">R$ 30</span><button class="add" data-price="30">Adicionar</button></div></div>
+      <div class="food" data-cat="side" hidden><div class="emoji">🍟</div><h3>Fritas da casa</h3><p>Batata rústica com páprica e alho.</p><div class="row"><span class="price">R$ 18</span><button class="add" data-price="18">Adicionar</button></div></div>
+      <div class="food" data-cat="side" hidden><div class="emoji">🧅</div><h3>Onion rings</h3><p>Anéis de cebola empanados, com molho barbecue.</p><div class="row"><span class="price">R$ 20</span><button class="add" data-price="20">Adicionar</button></div></div>
+      <div class="food" data-cat="drink" hidden><div class="emoji">🥤</div><h3>Refrigerante lata</h3><p>Coca-Cola, Guaraná ou Sprite.</p><div class="row"><span class="price">R$ 7</span><button class="add" data-price="7">Adicionar</button></div></div>
+      <div class="food" data-cat="drink" hidden><div class="emoji">🍋</div><h3>Limonada da casa</h3><p>Feita na hora, 500ml.</p><div class="row"><span class="price">R$ 12</span><button class="add" data-price="12">Adicionar</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Como pedir</h2>
+    <p class="sub">Sem app, sem cadastro.</p>
+    <div class="how">
+      <div><b>1</b>Escolha no cardápio</div>
+      <div><b>2</b>Envie o pedido no WhatsApp</div>
+      <div><b>3</b>Receba quentinho em casa</div>
+    </div>
+  </div>
+</section>
+
+<div class="bar" id="bar"><span id="total">0 itens · R$ 0</span><a class="btn" href="#cardapio">Finalizar no WhatsApp</a></div>
+<footer>Ter a dom, 18h às 23h30 · Rua do Comércio, 789<br><br>Site de demonstração · Brasa Burger é um negócio fictício</footer>
+
+<script>
+  document.querySelectorAll(".tab").forEach(function (t) {
+    t.addEventListener("click", function () {
+      document.querySelectorAll(".tab").forEach(function (x) { x.classList.toggle("on", x === t); });
+      document.querySelectorAll(".food").forEach(function (f) { f.hidden = f.dataset.cat !== t.dataset.cat; });
+    });
+  });
+  var count = 0, sum = 0;
+  document.querySelectorAll(".add").forEach(function (b) {
+    b.addEventListener("click", function () {
+      count++; sum += Number(b.dataset.price);
+      document.getElementById("total").textContent = count + (count === 1 ? " item" : " itens") + " · R$ " + sum;
+      document.getElementById("bar").classList.add("show");
+    });
+  });
+</script>
+</body>
+</html>

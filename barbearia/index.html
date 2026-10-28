@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Navalha Nobre Barbearia</title>
+<meta name="description" content="Barbearia clássica com corte, barba e tratamento. Agende pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #111010;
+    --card: #1b1918;
+    --text: #f3ede4;
+    --muted: #b3a999;
+    --gold: #c9a45c;
+    --line: #2c2826;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, .brand { font-family: "Playfair Display", Georgia, serif; }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+  .brand { font-size: 1.4rem; letter-spacing: .02em; }
+  .brand span { color: var(--gold); }
+  nav a.small-btn { color: var(--gold); text-decoration: none; font-weight: 600; border: 1px solid var(--gold); padding: 8px 16px; border-radius: 6px; font-size: .9rem; }
+
+  .hero {
+    padding: 90px 0 100px; text-align: center;
+    background:
+      radial-gradient(ellipse at top, rgba(201,164,92,.18), transparent 60%),
+      repeating-linear-gradient(135deg, transparent 0 22px, rgba(201,164,92,.04) 22px 24px);
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: .25em; font-size: .8rem; font-weight: 600; margin-bottom: 18px; }
+  h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); line-height: 1.05; margin-bottom: 20px; }
+  .lead { color: var(--muted); font-size: 1.1rem; max-width: 560px; margin: 0 auto 34px; }
+  .btn { display: inline-block; background: var(--gold); color: #1a1408; font-weight: 700; text-decoration: none; padding: 15px 30px; border-radius: 6px; }
+  .btn:hover { filter: brightness(1.1); }
+
+  section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+  h2 { font-size: 2rem; text-align: center; margin-bottom: 10px; }
+  .sub { text-align: center; color: var(--muted); margin-bottom: 40px; }
+
+  .menu { max-width: 640px; margin: 0 auto; }
+  .item { display: flex; align-items: baseline; gap: 12px; padding: 16px 0; border-bottom: 1px dashed var(--line); }
+  .item strong { font-weight: 600; }
+  .item small { display: block; color: var(--muted); }
+  .dots { flex: 1; border-bottom: 1px dotted #4a433c; transform: translateY(-4px); }
+  .price { color: var(--gold); font-weight: 700; white-space: nowrap; }
+
+  .team { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .barber { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 26px; text-align: center; }
+  .avatar { width: 84px; height: 84px; border-radius: 50%; margin: 0 auto 14px; display: grid; place-items: center; font-family: "Playfair Display", serif; font-size: 1.8rem; color: #1a1408; background: linear-gradient(135deg, #e4c78a, #9c7a3a); }
+  .barber p { color: var(--muted); font-size: .95rem; }
+
+  .reviews { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .review { background: var(--card); border-left: 3px solid var(--gold); padding: 22px; border-radius: 6px; }
+  .stars { color: var(--gold); letter-spacing: 2px; margin-bottom: 8px; }
+  .review p { color: var(--muted); font-style: italic; }
+  .review b { display: block; margin-top: 10px; font-style: normal; }
+
+  .info { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .box { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 26px; }
+  .box h3 { color: var(--gold); margin-bottom: 10px; font-size: 1rem; text-transform: uppercase; letter-spacing: .12em; }
+  .box p, .box li { color: var(--muted); }
+  .box ul { list-style: none; }
+  .box li { display: flex; justify-content: space-between; padding: 4px 0; }
+  .map { margin-top: 18px; height: 180px; border-radius: 8px; background:
+    linear-gradient(90deg, transparent 48%, #3a342f 48% 52%, transparent 52%),
+    linear-gradient(0deg, transparent 58%, #3a342f 58% 61%, transparent 61%),
+    linear-gradient(30deg, transparent 70%, #332d29 70% 72%, transparent 72%),
+    #221f1d; position: relative; }
+  .map::after { content: "📍"; position: absolute; left: 50%; top: 52%; transform: translate(-50%, -100%); font-size: 1.8rem; }
+
+  .float { position: fixed; right: 18px; bottom: 18px; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: grid; place-items: center; box-shadow: 0 6px 20px rgba(0,0,0,.4); text-decoration: none; font-size: 1.6rem; }
+  footer { padding: 30px 0 90px; text-align: center; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="brand">Navalha <span>Nobre</span></div>
+    <a class="small-btn" href="#contato">Agendar</a>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Barbearia clássica · desde 2015</p>
+    <h1>Corte de respeito,<br>barba no capricho.</h1>
+    <p class="lead">Ambiente tranquilo, café passado na hora e barbeiros que sabem o que fazem. Agende em segundos pelo WhatsApp.</p>
+    <a class="btn" href="#contato">Agendar meu horário</a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Serviços</h2>
+    <p class="sub">Preços fixos, sem surpresa.</p>
+    <div class="menu">
+      <div class="item"><div><strong>Corte masculino</strong><small>Tesoura ou máquina, com lavagem</small></div><span class="dots"></span><span class="price">R$ 45</span></div>
+      <div class="item"><div><strong>Barba completa</strong><small>Toalha quente e navalha</small></div><span class="dots"></span><span class="price">R$ 35</span></div>
+      <div class="item"><div><strong>Corte + barba</strong><small>O combo mais pedido</small></div><span class="dots"></span><span class="price">R$ 70</span></div>
+      <div class="item"><div><strong>Pigmentação</strong><small>Barba ou cabelo</small></div><span class="dots"></span><span class="price">R$ 30</span></div>
+      <div class="item"><div><strong>Corte infantil</strong><small>Até 12 anos</small></div><span class="dots"></span><span class="price">R$ 35</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Nossos barbeiros</h2>
+    <p class="sub">Escolha com quem quer cortar.</p>
+    <div class="team">
+      <div class="barber"><div class="avatar">R</div><h3>Rafael</h3><p>Especialista em degradê e cortes clássicos.</p></div>
+      <div class="barber"><div class="avatar">T</div><h3>Thiago</h3><p>Barba desenhada e pigmentação.</p></div>
+      <div class="barber"><div class="avatar">L</div><h3>Leo</h3><p>Cortes modernos e infantil com paciência.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Quem cortou, voltou</h2>
+    <p class="sub">4,9 de nota no Google</p>
+    <div class="reviews">
+      <div class="review"><div class="stars">★★★★★</div><p>"Melhor degradê que já fiz. Atendimento pontual e ambiente top."</p><b>Marcos S.</b></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"Levo meu filho desde os 4 anos. O Leo tem uma paciência de ouro."</p><b>Juliana P.</b></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"A toalha quente na barba já vale a visita."</p><b>André L.</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <h2>Venha nos visitar</h2>
+    <p class="sub">Agende pelo WhatsApp e chegue na hora certa.</p>
+    <div class="info">
+      <div class="box">
+        <h3>Horários</h3>
+        <ul>
+          <li><span>Terça a sexta</span><span>9h às 20h</span></li>
+          <li><span>Sábado</span><span>8h às 18h</span></li>
+          <li><span>Domingo e segunda</span><span>Fechado</span></li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Endereço</h3>
+        <p>Rua das Palmeiras, 123 · Centro</p>
+        <div class="map" aria-label="Mapa ilustrativo"></div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:34px"><a class="btn" href="#contato">Agendar pelo WhatsApp</a></p>
+  </div>
+</section>
+
+<a class="float" href="#contato" aria-label="WhatsApp">💬</a>
+<footer>Site de demonstração · Navalha Nobre é um negócio fictício</footer>
+</body>
+</html>

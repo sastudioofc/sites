@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfólio de sites</title>
+<style>
+  :root { --bg:#0f1115; --card:#171a21; --text:#eef0f4; --muted:#a2a8b5; --accent:#5b8cff; --line:#262b36; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+  .wrap { max-width:960px; margin:0 auto; padding:56px 20px; }
+  h1 { font-size:clamp(1.9rem,5vw,2.6rem); letter-spacing:-.02em; margin-bottom:10px; }
+  .lead { color:var(--muted); max-width:600px; margin-bottom:40px; }
+  .grid { display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+  a.card { display:block; text-decoration:none; color:inherit; background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; transition:transform .15s,border-color .15s; }
+  a.card:hover { transform:translateY(-3px); border-color:var(--accent); }
+  .thumb { height:150px; display:grid; place-items:center; font-size:3.4rem; }
+  .body { padding:18px 20px 22px; }
+  .body h2 { font-size:1.15rem; margin-bottom:4px; }
+  .body p { color:var(--muted); font-size:.95rem; }
+  .go { display:inline-block; margin-top:12px; color:var(--accent); font-weight:600; }
+  footer { color:var(--muted); font-size:.9rem; margin-top:44px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Sites para pequenos negócios</h1>
+  <p class="lead">Exemplos de sites de uma página, rápidos e feitos primeiro para o celular, com botão de WhatsApp. Todos os negócios abaixo são fictícios e foram criados para demonstração.</p>
+  <div class="grid">
+    <a class="card" href="barbearia/"><div class="thumb" style="background:linear-gradient(135deg,#1b1918,#3a2f1f)">💈</div><div class="body"><h2>Barbearia</h2><p>Serviços com preços, barbeiros, avaliações e agendamento pelo WhatsApp.</p><span class="go">Ver site →</span></div></a>
+    <a class="card" href="estetica/"><div class="thumb" style="background:linear-gradient(135deg,#f3e1d9,#d9a596)">✨</div><div class="body"><h2>Clínica de estética</h2><p>Tratamentos, passo a passo da avaliação e chamada para agendar.</p><span class="go">Ver site →</span></div></a>
+    <a class="card" href="hamburgueria/"><div class="thumb" style="background:linear-gradient(135deg,#1e1410,#e2401c)">🍔</div><div class="body"><h2>Hamburgueria</h2><p>Cardápio com abas, carrinho e pedido finalizado pelo WhatsApp.</p><span class="go">Ver site →</span></div></a>
+  </div>
+  <footer>Quer um site assim para o seu negócio? Fale comigo pelo Workana.</footer>
+</div>
+</body>
+</html>
