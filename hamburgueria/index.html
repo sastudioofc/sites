@@ -126,7 +126,7 @@
   </div>
 </section>
 
-<div class="bar" id="bar"><span id="total">0 itens · R$ 0</span><a class="btn" href="#cardapio">Finalizar no WhatsApp</a></div>
+<div class="bar" id="bar"><span id="total">0 itens · R$ 0</span><a class="btn" href="#" id="finalizar">Finalizar no WhatsApp</a></div>
 <footer>Ter a dom, 18h às 23h30 · Rua do Comércio, 789<br><br>Site de demonstração · Brasa Burger é um negócio fictício</footer>
 
 <script>
@@ -136,13 +136,24 @@
       document.querySelectorAll(".food").forEach(function (f) { f.hidden = f.dataset.cat !== t.dataset.cat; });
     });
   });
-  var count = 0, sum = 0;
+  /* ========= CONFIGURAÇÃO DO WHATSAPP =========
+     Troque pelo número do cliente com DDI e DDD, só números.
+     Exemplo: 5511987654321                                  */
+  var WHATSAPP = "554891248377";
+  /* ============================================ */
+  var itens = [], sum = 0;
   document.querySelectorAll(".add").forEach(function (b) {
     b.addEventListener("click", function () {
-      count++; sum += Number(b.dataset.price);
-      document.getElementById("total").textContent = count + (count === 1 ? " item" : " itens") + " · R$ " + sum;
+      var nome = b.closest(".food").querySelector("h3").textContent;
+      itens.push(nome); sum += Number(b.dataset.price);
+      document.getElementById("total").textContent = itens.length + (itens.length === 1 ? " item" : " itens") + " · R$ " + sum;
       document.getElementById("bar").classList.add("show");
     });
+  });
+  document.getElementById("finalizar").addEventListener("click", function (e) {
+    e.preventDefault();
+    var msg = "Olá! Quero fazer um pedido:\n- " + itens.join("\n- ") + "\nTotal: R$ " + sum;
+    window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg), "_blank");
   });
 </script>
 </body>
